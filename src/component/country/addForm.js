@@ -148,8 +148,8 @@ export default (props) => {
                   onClick={() => arrayHelpers.insert(0, '')}
                 >전화번호 추가</Button>
                 {
-                  values.callingCodes.map((_, index) => (
-                    <div key={index}>
+                  values.callingCodes.map((code, index) => (
+                    <div key={code}>
                       <FieldForm marginBottom="5">
                         <Field name={`callingCodes.${index}`} />
                         <Button

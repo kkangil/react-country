@@ -32,7 +32,7 @@ export default (props) => {
   for (let i = 0; i < _itemsCnt; i++) {
     const country = searchedCountries[i]
     countryRows.push(
-      <tr key={i}>
+      <tr key={country.alpha2Code}>
         <td>{country.alpha2Code}</td>
         <td>{country.capital}</td>
         <td>{country.name}</td>
