@@ -4,6 +4,7 @@ import _ from 'lodash'
 import CountryActions from '@/fetchActions/country'
 
 import { sortByKeyDesc, sortByKeyAsc } from '@/utils/sortByKey'
+import { deepCloneArrJson } from '@/utils/deepCloneArrJson'
 
 const GET_COUNTRIES_SUCCESS = 'GET_COUNTRIES_SUCCESS'
 const GET_COUNTRIES_ERROR = 'GET_COUNTRIES_ERROR'
@@ -129,8 +130,8 @@ const _deleteCountry = (state, { payload }) => {
     index
   } = payload
 
-  const searchedCountries = state.searchedCountries.map(row => ({ ...row }))
-  const countries = state.countries.map(row => ({ ...row }))
+  const searchedCountries = deepCloneArrJson(state.searchedCountries)
+  const countries = deepCloneArrJson(state.countries)
 
   const targetCountry = searchedCountries[index]
   const targetOriginIndex = _.findIndex(countries, country => (
@@ -153,7 +154,7 @@ const _deleteCountry = (state, { payload }) => {
  */
 export const addCountry = createAction(ADD_COUNTRY)
 const _addCountry = (state, { payload }) => {
-  let countries = state.countries.map(row => ({ ...row }))
+  let countries = deepCloneArrJson(state.countries)
   countries.push(payload)
 
   let searchedCountries = findCountries({
