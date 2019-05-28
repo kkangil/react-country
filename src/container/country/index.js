@@ -22,6 +22,10 @@ class CountryContainer extends Component {
     window.addEventListener('scroll', this.getCountriesByScroll)
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.getCountriesByScroll)
+  }
+
   changeSearchText = e => {
     CountryActions.changeSearchText({
       searchText: e.target.value
